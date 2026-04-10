@@ -1,0 +1,22 @@
+# Logs
+logs/
+*.log
+
+# Archiv (DEINE DOKUMENTE!)
+archiv/
+
+# Scan & Processing
+scan/
+processing/
+
+# Lockfile
+*.lock
+
+# System
+.DS_Store
+
+# Konfiguration (WICHTIG!)
+config.php
+
+# Temp
+*.tmp

@@ -1,0 +1,418 @@
+/* =====================================================
+DOCVAULT DESIGN SYSTEM
+===================================================== */
+
+body{
+    background:#f5f7fb;
+    font-size:14px;
+}
+
+
+/* =====================================================
+TYPOGRAPHY
+===================================================== */
+
+h1,h2,h3,h4{
+    font-weight:600;
+}
+
+
+/* =====================================================
+CARDS
+===================================================== */
+
+.card{
+    border:none;
+    border-radius:10px;
+}
+
+.card.shadow-sm{
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+
+/* =====================================================
+TABLE SYSTEM
+===================================================== */
+
+.dv-table{
+    font-size:14px;
+}
+
+.dv-table th{
+    font-weight:600;
+    background:#212529;
+    color:#fff;
+}
+
+.dv-table td{
+    vertical-align:middle;
+}
+
+
+/* =====================================================
+TABLE CONTAINER (SCROLL)
+===================================================== */
+
+.dv-table-container{
+    max-height:70vh;
+    overflow:auto;
+}
+
+
+/* =====================================================
+STICKY TABLE HEADER
+===================================================== */
+
+.dv-table thead th{
+    position:sticky;
+    top:0;
+    z-index:30;
+    background:#212529;
+    color:#fff;
+    box-shadow:0 2px 3px rgba(0,0,0,0.2);
+}
+
+.dv-table thead th a{
+    color:#fff !important;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.dv-table thead th a:hover{
+    text-decoration:underline;
+}
+
+
+/* =====================================================
+FIXED ACTION COLUMN
+===================================================== */
+
+.dv-table th:last-child,
+.dv-table td:last-child{
+    position:sticky;
+    right:0;
+    z-index:20;
+    background-color: var(--bs-table-bg);
+}
+
+.dv-table thead th:last-child{
+    background:#212529;
+    color:#fff;
+    z-index:40;
+}
+
+
+/* =====================================================
+TABLE LINKS
+===================================================== */
+
+.dv-table a{
+    color:#212529 !important;
+    text-decoration:none !important;
+    font-weight:400 !important;
+}
+
+.dv-table a:hover{
+    text-decoration:underline !important;
+}
+
+
+/* =====================================================
+TABLE ACTIONS
+===================================================== */
+
+.table-actions{
+    text-align:right;
+    white-space:nowrap;
+}
+
+.table-actions a,
+.table-actions button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    margin-left:6px;
+    border-radius:6px;
+    border:none;
+    background:none;
+    text-decoration:none;
+    color:#6c757d;
+    transition:all .15s ease;
+    cursor:pointer;
+}
+
+.table-actions a:hover,
+.table-actions button:hover{
+    background:#f1f3f5;
+}
+
+.table-actions i{
+    font-size:1.05rem;
+}
+
+.action-preview{ color:#6c757d; }
+.action-edit{ color:#0d6efd; }
+.action-delete{ color:#dc3545; }
+
+.action-delete:hover{
+    color:#b02a37;
+}
+
+
+/* =====================================================
+TAG BADGES
+===================================================== */
+
+.dv-tag,
+.badge-tag{
+    display:inline-block;
+    background:#eef2f7;
+    color:#495057;
+    border-radius:6px;
+    padding:3px 8px;
+    font-size:12px;
+    margin-right:4px;
+    margin-bottom:2px;
+}
+
+
+/* =====================================================
+TAG SELECT
+===================================================== */
+
+.dv-tag-select{
+    border:1px solid #dee2e6;
+    border-radius:6px;
+    padding:10px;
+    max-height:200px;
+    overflow:auto;
+    background:#fff;
+}
+
+.dv-tag-select .form-check{
+    margin-bottom:4px;
+}
+
+
+/* =====================================================
+FORMS
+===================================================== */
+
+.form-control{
+    border-radius:6px;
+}
+
+textarea.form-control{
+    resize:vertical;
+}
+
+
+/* =====================================================
+BUTTONS
+===================================================== */
+
+.btn{
+    border-radius:6px;
+}
+
+
+/* =====================================================
+NAVBAR
+===================================================== */
+
+.navbar{
+    z-index:1100;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+.navbar .form-control{
+    border-radius:30px;
+}
+
+
+/* =====================================================
+SUBNAV DIREKT UNTER HAUPTNAV
+===================================================== */
+
+/* =====================================================
+SUBNAV STICKY FINAL (OHNE SPRINGEN)
+===================================================== */
+
+.dv-subnav-bar{
+    position: sticky;
+    top: 56px; /* feste Bootstrap Navbar Höhe */
+    z-index: 1050;
+
+    background:#fff;
+    border-bottom:1px solid #dee2e6;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+
+    margin:0;
+    padding:0;
+}
+
+/* volle Breite */
+.dv-subnav-bar .container-fluid{
+    padding-left:0;
+    padding-right:0;
+}
+
+/* Tabs sauber */
+.dv-subnav-bar .nav{
+    margin-bottom:0 !important;
+    padding-left:0;
+    padding-right:0;
+}
+
+/* Tabs Styling */
+.nav-tabs{
+    border-bottom:none;
+}
+
+.nav-tabs .nav-link{
+    border-radius:0;
+}
+
+.nav-tabs .nav-link.active{
+    border-bottom:2px solid #0d6efd;
+}
+
+/* =====================================================
+FILTER BAR
+===================================================== */
+
+.filter-bar form{
+    min-width:200px;
+}
+
+
+/* =====================================================
+TABLE COLOR FIXES (FINAL – STRIPED SAFE)
+===================================================== */
+
+/* --- WARNING (neu) --- */
+.dv-table tr.table-warning > td,
+.dv-table tr.table-warning > th{
+    background-color:#fff3cd !important;
+}
+
+.dv-table.table-striped > tbody > tr.table-warning:nth-of-type(odd) > *,
+.dv-table.table-striped > tbody > tr.table-warning:nth-of-type(even) > *{
+    background-color:#fff3cd !important;
+}
+
+/* --- ERROR --- */
+.dv-table tr.table-danger > td,
+.dv-table tr.table-danger > th{
+    background-color:#f8d7da !important;
+}
+
+.dv-table.table-striped > tbody > tr.table-danger:nth-of-type(odd) > *,
+.dv-table.table-striped > tbody > tr.table-danger:nth-of-type(even) > *{
+    background-color:#f8d7da !important;
+}
+
+/* =====================================================
+STICKY ACTION COLUMN COLOR FIX
+===================================================== */
+
+.dv-table td:last-child{
+    background-color:inherit !important;
+}
+
+/* wichtig für farbige zeilen */
+.dv-table tr.table-warning td:last-child{
+    background-color:#fff3cd !important;
+}
+
+.dv-table tr.table-danger td:last-child{
+    background-color:#f8d7da !important;
+}
+
+
+/* =====================================================
+VIEW SYSTEM
+===================================================== */
+
+.dv-view-block{
+    margin-bottom:1.2rem;
+}
+
+.dv-view-label{
+    display:inline-block;
+    background:#212529;
+    color:#fff;
+    font-size:0.7rem;
+    font-weight:600;
+    padding:3px 8px;
+    border-radius:4px;
+    margin-bottom:6px;
+    letter-spacing:0.3px;
+    border-left:3px solid #D7742C;
+}
+
+.dv-view-value{
+    font-size:0.95rem;
+    color:#212529;
+}
+
+.dv-view-value p{
+    margin-bottom:0.5rem;
+}
+
+.dv-view-value ul{
+    padding-left:18px;
+    margin-bottom:0.5rem;
+}
+
+.dv-view-value table{
+    width:100%;
+    margin-top:6px;
+}
+
+
+/* =====================================================
+NOTES
+===================================================== */
+
+.notes-full{
+    max-height:70vh;
+    overflow:auto;
+}
+
+
+/* =====================================================
+LABELS
+===================================================== */
+
+.form-label{
+    font-weight:600;
+}
+
+
+/* =====================================================
+MOBILE FIXES
+===================================================== */
+
+@media (max-width:768px){
+
+    .table-actions a,
+    .table-actions button{
+        width:24px;
+        height:24px;
+        margin-left:4px;
+    }
+
+    .table-actions i{
+        font-size:0.9rem;
+    }
+
+    .btn{
+        padding:4px 8px;
+        font-size:13px;
+    }
+
+}
