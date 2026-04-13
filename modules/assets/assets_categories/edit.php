@@ -22,7 +22,29 @@ if (!$category) {
     exit;
 }
 
-/* POST Kategorie */
+/* =========================
+   POST SUB (WICHTIG: zuerst!)
+   ========================= */
+if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["type"] ?? '') === 'sub_add') {
+
+    $name = trim($_POST["sub_name"] ?? "");
+    $categoryId = (int)($_POST["category_id"] ?? 0);
+
+    if ($name !== "" && $categoryId > 0) {
+
+        $pdo->prepare("
+            INSERT INTO subcategories (category_id, name)
+            VALUES (?, ?)
+        ")->execute([$categoryId, $name]);
+    }
+
+    header("Location: edit.php?id=".$id);
+    exit;
+}
+
+/* =========================
+   POST KATEGORIE
+   ========================= */
 if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["type"] ?? '') === 'category') {
 
     $name = trim($_POST["name"] ?? "");
@@ -32,20 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["type"] ?? '') === 'categor
             ->execute([$name, $id]);
     }
 
-    header("Location: edit.php?id=".$id);
-    exit;
-}
+    $action = $_POST['action'] ?? 'save';
 
-/* POST Sub */
-if ($_SERVER["REQUEST_METHOD"] === "POST" && ($_POST["type"] ?? '') === 'sub_add') {
-
-    $name = trim($_POST["sub_name"] ?? "");
-
-    if ($name !== "") {
-        $pdo->prepare("
-            INSERT INTO subcategories (category_id, name)
-            VALUES (?, ?)
-        ")->execute([$id, $name]);
+    if ($action === 'save_close') {
+        header("Location: index.php");
+        exit;
     }
 
     header("Location: edit.php?id=".$id);
@@ -111,11 +124,25 @@ require __DIR__ . "/../../../core/form_actions.php";
 
 <label class="form-label">Unterkategorien</label>
 
-<form method="post" class="d-flex gap-2 mb-3">
+<form method="post" class="d-flex gap-2 mb-1">
 <input type="hidden" name="type" value="sub_add">
-<input type="text" name="sub_name" class="form-control" placeholder="Neue Unterkategorie">
-<button class="btn btn-warning">+</button>
+<input type="hidden" name="category_id" value="<?= $id ?>">
+
+<input type="text" name="sub_name"
+       class="form-control"
+       placeholder="Neue Unterkategorie">
+
+<button type="submit"
+        class="btn btn-warning"
+        data-bs-toggle="tooltip"
+        title="Unterkategorie hinzufügen">
+    <i class="bi bi-plus"></i>
+</button>
 </form>
+
+<small class="text-muted d-block mb-3">
+Unterkategorie mit + hinzufügen
+</small>
 
 <table class="table table-striped table-hover dv-table">
 <tbody>
@@ -128,6 +155,8 @@ require __DIR__ . "/../../../core/form_actions.php";
 <td class="text-end">
 <a href="delete.php?sub=<?= (int)$s['id'] ?>&cat=<?= $id ?>"
    class="btn btn-sm btn-outline-danger"
+   data-bs-toggle="tooltip"
+   title="Unterkategorie löschen"
    onclick="return confirm('Löschen?')">
 <i class="bi bi-trash"></i>
 </a>
@@ -141,5 +170,13 @@ require __DIR__ . "/../../../core/form_actions.php";
 
 </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el){
+new bootstrap.Tooltip(el);
+});
+});
+</script>
 
 <?php require_once __DIR__ . "/../../../core/layout_end.php"; ?>
